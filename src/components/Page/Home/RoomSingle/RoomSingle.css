@@ -1,0 +1,39 @@
+.room-by span {
+  color: gray;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.room-by img {
+  margin-left: 5px;
+  height: 26px;
+  width: auto;
+}
+.gellary img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.content {
+  /* border: 3px solid red; */
+}
+.content .booking-card {
+  text-align: center;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.make-me-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+
+  padding: 0 15px;
+}
+/* On screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {
+  .gellary > .row {
+    row-gap: 5px;
+    justify-content: center;
+  }
+}

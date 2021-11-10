@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import Home from "./components/Page/Home/Home";
+import RoomSingle from "./components/Page/Home/RoomSingle/RoomSingle";
 
 function App() {
   return (
@@ -11,13 +12,8 @@ function App() {
         <Route exact path="/">
           <Home></Home>
         </Route>
-        <Route exact path="/single">
-          <h1
-            style={{ border: "3px solid red", marginTop: "20px" }}
-            className="p-5"
-          >
-            Booking details page
-          </h1>
+        <Route exact path="/rooms/:roomId">
+          <RoomSingle></RoomSingle>
         </Route>
         <Route path="*">
           <h1 className="text-center">404 Not Found Page</h1>
