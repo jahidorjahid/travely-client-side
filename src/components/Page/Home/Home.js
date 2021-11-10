@@ -1,6 +1,17 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import Room from "../../Room/Room";
 
 const Home = () => {
+  const API_URL = "http://localhost:5000/rooms";
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    // GET request
+    axios(API_URL).then((res) => setRooms(res.data));
+  }, []);
+
+  console.log(rooms);
   return (
     <div>
       <section className="home-section" id="home">
@@ -195,90 +206,9 @@ const Home = () => {
             {/*begin row */}
             <div className="row">
               {/*begin col-md-4 */}
-              <div className="col-md-4">
-                <div className="main-services">
-                  <img
-                    src="http://placehold.it/720x480"
-                    className="width-100"
-                    alt="pic"
-                  />
-
-                  <h3>
-                    <a href="/">Private GP Healthcare</a>
-                  </h3>
-
-                  <p>
-                    Curabitur quam etsum lacus netum netsum nulatis iaculis
-                    etsimun vitaemis etsum nisle varius netsum.
-                  </p>
-                  <div className="d-flex justify-content-center">
-                    <p>
-                      Rate: <span className="text-dark">345$</span>
-                    </p>
-                    <p>
-                      Type: <span className="text-dark">Delux</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/*end col-md-4 */}
-
-              {/*begin col-md-4 */}
-              <div className="col-md-4">
-                <div className="main-services">
-                  <img
-                    src="https://a0.muscache.com/im/pictures/75467644/f354a0a3_original.jpg"
-                    className="width-100"
-                    alt="pic"
-                  />
-
-                  <h3>
-                    <a href="/">Entire residential home hosted by Prasert</a>
-                  </h3>
-
-                  <p>
-                    Atta Residence is the luxury villa located in the Kirimaya
-                    Golf Course, Khaoyai, Thailand.
-                  </p>
-                  <div className="d-flex justify-content-center">
-                    <p>
-                      Rate: <span className="text-dark">345$</span>
-                    </p>
-                    <p>
-                      Type: <span className="text-dark">Delux</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/*end col-md-4 */}
-
-              {/*begin col-md-4 */}
-              <div className="col-md-4">
-                <div className="main-services">
-                  <img
-                    src="http://placehold.it/720x480"
-                    className="width-100"
-                    alt="pic"
-                  />
-
-                  <h3>
-                    <a href="/">Internal Medicine</a>
-                  </h3>
-
-                  <p>
-                    Curabitur quam etsum lacus netum netsum nulatis iaculis
-                    etsimun vitaemis etsum nisle varius netsum.
-                  </p>
-                  <div className="d-flex justify-content-center">
-                    <p>
-                      Rate: <span className="text-dark">345$</span>
-                    </p>
-                    <p>
-                      Type: <span className="text-dark">Delux</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {rooms.slice(0, 3).map((room) => (
+                <Room data={room}></Room>
+              ))}
               {/*end col-md-4 */}
             </div>
             {/*end row */}
