@@ -6,14 +6,30 @@ import "./RoomSingle.css";
 const RoomSingle = () => {
   const { roomId } = useParams();
   const [room, setRoom] = useState({});
-  const API_URL = `http://localhost:5000/rooms/${roomId}`;
+  const [bookBtnText, setbookBtnText] = useState("Confirm Book");
+  const API_GET_SINGLE = `http://localhost:5000/rooms/${roomId}`;
+  const API_POST_SINGLE = `http://localhost:5000/rooms`;
+
   // handle confirm booking
-  const handleConfirmBook = (e) => {
-    e.target.setAttribute("disabled", true);
-    e.target.innerHTML = `Loading`;
+  const handleConfirmBook = () => {
+    setbookBtnText("Loading");
+    axios
+      .post(API_POST_SINGLE, {
+        roomId: room._id,
+        customerName: "jahid hasan",
+        customerEmail: "nahid@gmail.com",
+      })
+      .then((res) => {
+        if (res.data.insertedId) {
+          setbookBtnText("Booked");
+        }
+        console.log(res.data);
+      });
   };
+
+  // load room by id
   useEffect(() => {
-    axios(API_URL).then((res) => setRoom(res.data));
+    axios(API_GET_SINGLE).then((res) => setRoom(res.data));
   }, []);
   return (
     <div className="container my-3">
@@ -134,7 +150,7 @@ const RoomSingle = () => {
                     role="status"
                     aria-hidden="true"
                   ></span>
-                  LOADING
+                  {bookBtnText}
                 </button>
               </div>
             </div>
