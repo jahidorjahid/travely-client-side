@@ -6,12 +6,17 @@ const Home = () => {
   const API_URL = "http://localhost:5000/rooms";
   const [rooms, setRooms] = useState([]);
 
+  // add title for this webpage
+  useEffect(() => {
+    document.title = "Home - Travely";
+  }, []);
+
+  // get rooms
   useEffect(() => {
     // GET request
     axios(API_URL).then((res) => setRooms(res.data));
   }, []);
 
-  console.log(rooms);
   return (
     <div>
       <section className="home-section" id="home">

@@ -37,24 +37,24 @@ const Test = () => {
               {/*begin navbar-nav */}
               <ul className="navbar-nav ml-auto">
                 <li>
-                  <NavLink to="/single">Single page</NavLink>
+                  <NavLink to="/my-bookings">My Booking</NavLink>
                 </li>
 
                 <li>
-                  <NavLink to="#services">What We Do</NavLink>
+                  <NavLink to="/manage-bookings">Manage Booking</NavLink>
                 </li>
 
                 <li>
-                  <NavLink to="#testimonials">Testimonials</NavLink>
+                  <NavLink to="/contact-us">Contact Us</NavLink>
                 </li>
 
                 <li>
-                  <NavLink to="#features">About Us</NavLink>
+                  <NavLink to="/about-us">About Us</NavLink>
                 </li>
 
                 <li className="discover-link">
-                  <Link to="/" className="external discover-btn">
-                    Make Appointment
+                  <Link to="/rooms" className="external discover-btn">
+                    Make Booking
                   </Link>
                 </li>
               </ul>

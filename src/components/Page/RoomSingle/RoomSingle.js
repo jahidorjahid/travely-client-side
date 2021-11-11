@@ -27,10 +27,16 @@ const RoomSingle = () => {
       });
   };
 
+  // add title for this webpage
+  useEffect(() => {
+    document.title = room?.title || "Loading...";
+  }, [room]);
+
   // load room by id
   useEffect(() => {
     axios(API_GET_SINGLE).then((res) => setRoom(res.data));
   }, []);
+
   return (
     <div className="container my-3">
       <h1>{room.title}</h1>

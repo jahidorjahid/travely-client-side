@@ -4,6 +4,12 @@ import React, { useEffect, useState } from "react";
 const MyBooking = () => {
   const [error, setError] = useState("");
   const [bookings, setBookings] = useState([]);
+
+  // add title for this webpage
+  useEffect(() => {
+    document.title = "My Booking - Travely";
+  }, []);
+
   useEffect(() => {
     axios
       .post("http://localhost:5000/bookings", {
