@@ -2,8 +2,10 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Test = () => {
+  const { user } = useAuth();
   const [collapse, setCollapse] = useState(false);
 
   const handleCollapse = () => {
@@ -51,14 +53,22 @@ const Test = () => {
             >
               {/*begin navbar-nav */}
               <ul className="navbar-nav ml-auto">
+                {user?.email && (
+                  <>
+                    <li>
+                      <NavLink to="/my-bookings">My Booking</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/manage-bookings">Manage Booking</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/add-room">Add Room</NavLink>
+                    </li>
+                  </>
+                )}
                 <li>
-                  <NavLink to="/my-bookings">My Booking</NavLink>
+                  <NavLink to="/rooms">Rooms</NavLink>
                 </li>
-
-                <li>
-                  <NavLink to="/manage-bookings">Manage Booking</NavLink>
-                </li>
-
                 <li>
                   <NavLink to="/contact-us">Contact Us</NavLink>
                 </li>
