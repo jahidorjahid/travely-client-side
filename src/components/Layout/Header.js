@@ -1,7 +1,20 @@
-import React from "react";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 const Test = () => {
+  const [collapse, setCollapse] = useState(false);
+
+  const handleCollapse = () => {
+    if (collapse) {
+      setCollapse(false);
+    } else {
+      setCollapse(true);
+    }
+    console.log("clicked", collapse);
+  };
+
   return (
     <header className="header">
       {/*begin navbar-fixed-top */}
@@ -20,20 +33,22 @@ const Test = () => {
             <button
               className="navbar-toggler collapsed"
               type="button"
-              data-toggle="collapse"
-              data-target="#navbarCollapse"
-              aria-controls="navbarCollapse"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              onClick={handleCollapse}
             >
               <span className="navbar-toggler-icon">
-                <i className="fas fa-bars"></i>
+                <FontAwesomeIcon icon={faBars} />
               </span>
             </button>
             {/*end navbar-toggler */}
 
             {/*begin navbar-collapse */}
-            <div className="navbar-collapse collapse" id="navbarCollapse">
+            <div
+              className={
+                collapse
+                  ? "navbar-collapse collapse d-block"
+                  : "navbar-collapse collapse"
+              }
+            >
               {/*begin navbar-nav */}
               <ul className="navbar-nav ml-auto">
                 <li>
