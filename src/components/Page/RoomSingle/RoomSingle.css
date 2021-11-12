@@ -13,8 +13,8 @@
   cursor: pointer;
 }
 
-.content {
-  /* border: 3px solid red; */
+.gallery .gellary-4 {
+  display: none !important;
 }
 .content .booking-card {
   text-align: center;

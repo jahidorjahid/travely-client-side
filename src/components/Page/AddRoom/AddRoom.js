@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import useAuth from "../../../hooks/useAuth";
@@ -23,6 +24,11 @@ const AddRoom = () => {
       }
     });
   };
+
+  // add title for this webpage
+  useEffect(() => {
+    document.title = "Add Room - Travely";
+  }, []);
 
   return (
     <div>
@@ -75,6 +81,7 @@ const AddRoom = () => {
                   <option value="Single">Single</option>
                   <option value="Double">Double</option>
                   <option value="Delux">Delux</option>
+                  <option value="Couple">Couple</option>
                 </select>
 
                 <input

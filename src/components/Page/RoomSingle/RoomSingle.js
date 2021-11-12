@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 import "./RoomSingle.css";
+import Loading from "react-fullscreen-loading";
 import useAuth from "../../../hooks/useAuth";
 
 const RoomSingle = () => {
   const { roomId } = useParams();
   const { user } = useAuth();
   const [room, setRoom] = useState({});
+  const [loader, setLoader] = useState(true);
   const [bookBtnText, setbookBtnText] = useState("Confirm Book");
   const API_GET_SINGLE = `http://localhost:5000/rooms/${roomId}`;
   const API_POST_BOOKING = `http://localhost:5000/bookings`;
@@ -38,11 +40,17 @@ const RoomSingle = () => {
 
   // load room by id
   useEffect(() => {
-    axios(API_GET_SINGLE).then((res) => setRoom(res.data));
+    axios(API_GET_SINGLE).then((res) => {
+      // set room info
+      setRoom(res.data);
+      // close loader
+      setLoader(false);
+    });
   }, []);
 
   return (
     <div className="container my-3">
+      <Loading loading={loader} loaderColor="#3498db" />
       <h1>{room.title}</h1>
       <div className="d-flex room-by mb-3">
         <p className="d-inline-block">
@@ -58,36 +66,41 @@ const RoomSingle = () => {
             <img
               src={room.img1}
               alt={room.title}
-              className="img-fluid rounded"
+              className="rounded"
+              width="100%"
             />
           </div>
-          <div className="row col-md-12 col-lg-6 align-content-lg-between">
+          <div className="row gallery-4 col-md-12 col-lg-6 align-content-lg-between">
             <div className="col-md-3 col-lg-6 d-none d-md-block">
               <img
                 src={room.img2}
                 alt={room.title}
-                className="img-fluid rounded"
+                className="rounded"
+                width="100%"
               />
             </div>
             <div className="col-md-3 col-lg-6 d-none d-md-block">
               <img
                 src={room.img3}
                 alt={room.title}
-                className="img-fluid rounded"
+                className="rounded"
+                width="100%"
               />
             </div>
             <div className="col-md-3 col-lg-6 d-none d-md-block">
               <img
                 src={room.img4}
                 alt={room.title}
-                className="img-fluid rounded"
+                className="rounded"
+                width="100%"
               />
             </div>
             <div className="col-md-3 col-lg-6 d-none d-md-block">
               <img
                 src={room.img1}
                 alt={room.title}
-                className="img-fluid rounded"
+                className="rounded"
+                width="100%"
               />
             </div>
           </div>
