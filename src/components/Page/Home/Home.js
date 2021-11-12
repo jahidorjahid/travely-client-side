@@ -62,9 +62,9 @@ const Home = () => {
 
             {/* begin col-md-5*/}
             <div className="col-md-5 margin-top-20">
-              {/* begin register-form-wrapper*/}
+              {/* begin react-form-wrapper*/}
               <div
-                className="register-form-wrapper wow bounceIn"
+                className="react-form-wrapper wow bounceIn"
                 data-wow-delay="0.5s"
                 style={{
                   visibility: "visible",
@@ -82,43 +82,43 @@ const Home = () => {
 
                   {/* end success message */}
 
-                  {/* begin register form */}
-                  <form id="register-form" className="register-form register">
+                  {/* begin react form */}
+                  <form id="react-form" className="react-form react">
                     <input
-                      className="register-input name-input white-input"
+                      className="react-input name-input white-input"
                       required=""
-                      name="register_names"
+                      name="react_names"
                       placeholder="Company Name*"
                       type="text"
                     />
 
                     <input
-                      className="register-input name-email white-input"
+                      className="react-input name-email white-input"
                       required=""
-                      name="register_email"
+                      name="react_email"
                       placeholder="Email Adress*"
                       type="email"
                     />
 
                     <textarea
-                      className="register-input white-input"
+                      className="react-input white-input"
                       rows="2"
                       cols="20"
-                      name="register_message"
+                      name="react_message"
                       placeholder="Your Message..."
                     ></textarea>
 
                     <input
                       value="Make An Appointment Today"
-                      className="register-submit"
+                      className="react-submit"
                       type="submit"
                     />
                   </form>
-                  {/* end register form */}
+                  {/* end react form */}
                 </div>
                 {/* end form*/}
               </div>
-              {/* end register-form-wrapper*/}
+              {/* end react-form-wrapper*/}
             </div>
             {/* end col-md-5*/}
           </div>
@@ -233,7 +233,7 @@ const Home = () => {
             {/*begin col-md-12*/}
             <div className="col-md-12 text-center padding-bottom-10">
               <h3 className="section-title white-text">
-                Ready to register with our clinic?
+                Ready to react with our clinic?
               </h3>
 
               <p className="section-subtitle white margin-bottom-30">

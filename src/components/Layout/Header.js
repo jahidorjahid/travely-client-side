@@ -62,7 +62,7 @@ const Test = () => {
                       <NavLink to="/manage-bookings">Manage Booking</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/add-room">Add Room</NavLink>
+                      <NavLink to="/rooms/add">Add Room</NavLink>
                     </li>
                   </>
                 )}

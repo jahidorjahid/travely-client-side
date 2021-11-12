@@ -739,27 +739,28 @@ ul.home-benefits li i {
   margin-right: 5px;
 }
 
-/* -----  Register ----- */
-.register-form-wrapper {
+/* -----  react ----- */
+.react-form-wrapper {
   margin-top: 25px;
   padding: 40px 40px;
   background: rgba(255, 255, 255, 1);
   border-radius: 5px 5px;
 }
 
-.register-form-wrapper h3 {
+.react-form-wrapper h3 {
   margin-bottom: 5px;
   font-size: 22px;
   font-weight: 500;
 }
 
-.register-form-wrapper p {
+.react-form-wrapper p {
   margin-bottom: 25px;
   font-size: 17px;
 }
 
-input.register-input,
-textarea.register-input {
+input.react-input,
+textarea.react-input,
+select.react-input {
   width: 100% !important;
   height: 52px !important;
   padding-left: 11% !important;
@@ -772,7 +773,7 @@ textarea.register-input {
   border-radius: 5px 5px 5px 5px !important;
 }
 
-textarea.register-input {
+textarea.react-input {
   width: 100% !important;
   height: 80px !important;
 }
@@ -785,11 +786,11 @@ input.name-email {
   background: url("./assets/images/input-envelope.png") no-repeat 12px 15px;
 }
 
-textarea.register-input {
+textarea.react-input {
   background: url("./assets/images/input-select.png") no-repeat 12px 15px;
 }
 
-input.register-submit {
+input.react-submit {
   background: #1089d4;
   border: none;
   color: #fff;
@@ -810,28 +811,28 @@ input.register-submit {
   -webkit-transition: all 0.5s ease-in-out;
 }
 
-input.register-submit:hover {
+input.react-submit:hover {
   background: #0b79be;
   transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
 }
 
-#register-form input.register-input:focus,
-#register-form select.register-input:focus {
+#react-form input.react-input:focus,
+#react-form select.react-input:focus {
   border-color: #656565 !important;
   color: #454545 !important;
   outline: none;
 }
 
-#register-form input.register-input:focus,
-#register-form select.register-input:focus {
+#react-form input.react-input:focus,
+#react-form select.react-input:focus {
   border-color: #656565 !important;
   color: #454545 !important;
   outline: none;
 }
 
-p.register_success_box {
+p.react_success_box {
   display: inline-block;
   color: #0c75fb;
   border: 1px solid #dedede;
@@ -843,7 +844,7 @@ p.register_success_box {
   margin: 15px 0;
 }
 
-p.register-form-terms {
+p.react-form-terms {
   margin: 10px 0 5px 0;
   font-size: 14px;
   color: #7c8595;
@@ -1385,7 +1386,7 @@ ul.benefits.white li i {
     margin-left: 1px !important;
   }
 
-  .register-form-terms {
+  .react-form-terms {
     padding-bottom: 30px;
   }
 
@@ -1443,8 +1444,8 @@ ul.benefits.white li i {
     padding-right: 1px;
   }
 
-  input.register-input,
-  select.register-input {
+  input.react-input,
+  select.react-input {
     padding-left: 12% !important;
   }
 
@@ -1456,7 +1457,7 @@ ul.benefits.white li i {
     background: url("./assets/images/input-envelope.png") no-repeat 5px 15px;
   }
 
-  textarea.register-input {
+  textarea.react-input {
     background: url("./assets/images/input-select.png") no-repeat 5px 15px;
   }
 

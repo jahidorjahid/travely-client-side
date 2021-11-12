@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Room = (props) => {
-  const { _id, title, img_url, des, type, price } = props.data;
+  const { _id, title, img1, des, type, price } = props.data;
 
   return (
     <div className="col-md-4">
       <div className="main-services">
-        <img src={img_url} className="width-100" alt="pic" />
+        <img src={img1} className="width-100" alt="pic" />
 
         <h3>
           <Link to={`rooms/${_id}`}>{title}</Link>

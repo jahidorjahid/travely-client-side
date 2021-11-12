@@ -13,6 +13,7 @@ import About from "./components/Page/About/About";
 import Contact from "./components/Page/Contact/Contact";
 import Login from "./components/Page/Login/Login";
 import AuthProvider from "./Context/AuthProvider";
+import AddRoom from "./components/Page/AddRoom/AddRoom";
 
 function App() {
   return (
@@ -25,6 +26,12 @@ function App() {
           </Route>
           <Route exact path="/home">
             <Redirect to="/"></Redirect>
+          </Route>
+          <Route exact path="/rooms">
+            <h1>all rooms</h1>
+          </Route>
+          <Route exact path="/rooms/add">
+            <AddRoom></AddRoom>
           </Route>
           <Route exact path="/rooms/:roomId">
             <RoomSingle></RoomSingle>
