@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import Room from "../../Room/Room";
+import Room from "../Rooms/Room/Room";
 
 const Home = () => {
   const API_URL = "http://localhost:5000/rooms";

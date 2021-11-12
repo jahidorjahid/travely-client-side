@@ -31,7 +31,9 @@ const RoomSingle = () => {
 
   // add title for this webpage
   useEffect(() => {
+    // update webpage title
     document.title = room?.title || "Loading...";
+    // check already booked or not
   }, [room]);
 
   // load room by id
@@ -92,9 +94,9 @@ const RoomSingle = () => {
         </div>
       </div>
       <div className="content my-3">
-        <div className="row">
-          <div className="col-md-8"> {room.des}</div>
-          <div className="col-md-4 position-absyholute">
+        <div className="row gy-5">
+          <div className="col-md-7 col-lg-8"> {room.des}</div>
+          <div className="col-md-5 col-lg-4 position-absyholute">
             <div className="booking-card make-me-sticky">
               <div className="d-flex justify-content-between align-items-center">
                 <p className="mb-0">
