@@ -1,12 +1,14 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Test = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+  const [userButtonText, setUserButtonText] = useState("Login");
   const [collapse, setCollapse] = useState(false);
+  const history = useHistory();
 
   const handleCollapse = () => {
     if (collapse) {
@@ -16,6 +18,29 @@ const Test = () => {
     }
     console.log("clicked", collapse);
   };
+
+  // handle user button click event
+  const handleButton = (e) => {
+    e.preventDefault();
+
+    if (user?.email) {
+      logOut();
+      // after logged out redirect to login page
+      history.push("/login");
+    } else {
+      // if user not logged in click to go login page
+      history.push("/login");
+    }
+  };
+
+  // update user button text
+  useEffect(() => {
+    if (user?.email) {
+      setUserButtonText(`${user.displayName} (Logout)`);
+    } else {
+      setUserButtonText("Login");
+    }
+  }, [user]);
 
   return (
     <header className="header">
@@ -78,8 +103,12 @@ const Test = () => {
                 </li>
 
                 <li className="discover-link">
-                  <Link to="/rooms" className="external discover-btn">
-                    Make Booking
+                  <Link
+                    onClick={handleButton}
+                    to="/#"
+                    className="external discover-btn"
+                  >
+                    {userButtonText}
                   </Link>
                 </li>
               </ul>

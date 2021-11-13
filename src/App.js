@@ -15,6 +15,7 @@ import Login from "./components/Page/Login/Login";
 import AuthProvider from "./Context/AuthProvider";
 import AddRoom from "./components/Page/AddRoom/AddRoom";
 import Rooms from "./components/Page/Rooms/Rooms";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -31,18 +32,18 @@ function App() {
           <Route exact path="/rooms">
             <Rooms></Rooms>
           </Route>
-          <Route exact path="/rooms/add">
+          <PrivateRoute exact path="/rooms/add">
             <AddRoom></AddRoom>
-          </Route>
+          </PrivateRoute>
           <Route exact path="/rooms/:roomId">
             <RoomSingle></RoomSingle>
           </Route>
-          <Route exact path="/my-bookings">
+          <PrivateRoute exact path="/my-bookings">
             <MyBooking></MyBooking>
-          </Route>
-          <Route exact path="/manage-bookings">
+          </PrivateRoute>
+          <PrivateRoute exact path="/manage-bookings">
             <MyBooking></MyBooking>
-          </Route>
+          </PrivateRoute>
           <Route exact path="/contact-us">
             <Contact></Contact>
           </Route>

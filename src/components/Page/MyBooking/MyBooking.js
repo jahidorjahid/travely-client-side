@@ -1,9 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import useAuth from "../../../hooks/useAuth";
+import Loading from "react-fullscreen-loading";
 
 const MyBooking = () => {
+  const { user } = useAuth();
   const [error, setError] = useState("");
-  const [bookings, setBookings] = useState([]);
+  const [myBookings, setMyBookings] = useState([]);
+  const [loader, setLoader] = useState(true);
 
   // add title for this webpage
   useEffect(() => {
@@ -13,27 +17,29 @@ const MyBooking = () => {
   useEffect(() => {
     axios
       .post("http://localhost:5000/bookings", {
-        email: "nafrhid@gmail.com",
+        email: user.email,
       })
       .then((res) => {
         if (res.data.error) {
           setError(res.data.error);
         } else {
-          setBookings(res.data);
+          setMyBookings(res.data);
+          // close loader
+          setLoader(false);
         }
-
-        console.log(res.data);
       });
-  }, []);
+  }, [user]);
+
   return (
     <div className="text-center">
-      <h1>Manage my all booking</h1>
+      <Loading loading={loader} loaderColor="#3498db" />
+      <h2>Manage my all booking</h2>
       {error ? (
         <h3 className="text-danger">{error}</h3>
       ) : (
         <ul>
-          {bookings.map((booking) => (
-            <li>{booking.customerEmail}</li>
+          {myBookings.map((booking) => (
+            <li key={booking._id}>{booking.customerEmail}</li>
           ))}
         </ul>
       )}

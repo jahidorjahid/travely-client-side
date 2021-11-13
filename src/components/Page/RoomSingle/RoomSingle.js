@@ -12,7 +12,7 @@ const RoomSingle = () => {
   const [loader, setLoader] = useState(true);
   const [bookBtnText, setbookBtnText] = useState("Confirm Book");
   const API_GET_SINGLE = `http://localhost:5000/rooms/${roomId}`;
-  const API_POST_BOOKING = `http://localhost:5000/bookings`;
+  const API_POST_BOOKING = `http://localhost:5000/bookings/add`;
 
   // handle confirm booking
   const handleConfirmBook = () => {
