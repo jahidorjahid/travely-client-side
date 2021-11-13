@@ -1,3 +1,5 @@
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Room from "../Rooms/Room/Room";
@@ -27,29 +29,28 @@ const Home = () => {
           <div className="row">
             {/* begin col-md-5*/}
             <div className="col-md-6">
-              <h1 className="padding-top-150">Welcome To Our Clinic</h1>
+              <h1 className="padding-top-150">Welcome To Our Travelian</h1>
 
               <p className="hero-text">
-                Curabitur quam etsum lacus netum netsum nulatsum etsimunas
-                vitaemis etsum varius netsum. Tendis tempor ante acu ipsum
-                finibus atimus etims.
+                Traveling Improves Your Health. From cutting down on stress, to
+                lowering your chances of developing a heart disease, the health
+                benefits of traveling are huge.
               </p>
 
               {/* begin home-benefits */}
               <ul className="home-benefits">
                 <li>
-                  <i className="fas fa-check-circle"></i>Tendis tempor ante acu
-                  ipsum finibus.
+                  <FontAwesomeIcon icon={faCircle} /> Where the journey begins!
                 </li>
 
                 <li>
-                  <i className="fas fa-check-circle"></i>Atimus etims urnatis
-                  quisle ratione netis.
+                  <FontAwesomeIcon icon={faCircle} /> To the world of an
+                  incredible vacation
                 </li>
 
                 <li>
-                  <i className="fas fa-check-circle"></i>Ratione lorem nets et
-                  sequi tempor.
+                  <FontAwesomeIcon icon={faCircle} /> Traveling opens door to
+                  creating memories
                 </li>
               </ul>
               {/* end home-benefits */}
@@ -72,9 +73,9 @@ const Home = () => {
                   animationName: "bounceIn",
                 }}
               >
-                <h3>Make An Appointment</h3>
+                <h3>Contact Travely</h3>
 
-                <p>Velis demo enim quia tempor magnet.</p>
+                <p>Let us book your tour 👌.</p>
 
                 {/* begin form*/}
                 <div>
@@ -88,7 +89,7 @@ const Home = () => {
                       className="react-input name-input white-input"
                       required=""
                       name="react_names"
-                      placeholder="Company Name*"
+                      placeholder="Your Name*"
                       type="text"
                     />
 
@@ -109,7 +110,7 @@ const Home = () => {
                     ></textarea>
 
                     <input
-                      value="Make An Appointment Today"
+                      value="Make A Book"
                       className="react-submit"
                       type="submit"
                     />
@@ -152,7 +153,7 @@ const Home = () => {
 
               <h5 className="white-text">Phone Number</h5>
 
-              <p className="white-text">+44 021 567 890</p>
+              <p className="white-text">+88 01611-23881</p>
             </div>
             {/*end col-md-3 */}
 
@@ -164,7 +165,7 @@ const Home = () => {
 
               <h5 className="white-text">Email Address</h5>
 
-              <p className="white-text">medical@contact.com</p>
+              <p className="white-text">contact@travely.com</p>
             </div>
             {/*end col-md-3 */}
 
@@ -176,7 +177,7 @@ const Home = () => {
 
               <h5 className="white-text">Our Location</h5>
 
-              <p className="white-text">123, Main Street, London</p>
+              <p className="white-text">Sylhet, Bangladesh</p>
             </div>
             {/*end col-md-3 */}
           </div>
@@ -195,7 +196,8 @@ const Home = () => {
               <h2 className="section-title">Discover Our Services</h2>
 
               <p className="section-subtitle">
-                Quis autem velis ets reprehender net etid quiste voluptate.
+                Let us transport you with our highly affordable and reliable
+                holiday packages
               </p>
             </div>
             {/*end col-md-12 */}
@@ -233,11 +235,11 @@ const Home = () => {
             {/*begin col-md-12*/}
             <div className="col-md-12 text-center padding-bottom-10">
               <h3 className="section-title white-text">
-                Ready to react with our clinic?
+                Ready to go with our place?
               </h3>
 
               <p className="section-subtitle white margin-bottom-30">
-                Quis autem velis ets reprehender net etid quiste voluptate.
+                You don’t choose where you go, the journey chooses you
               </p>
 
               <a href="/" className="btn-white scrool">
