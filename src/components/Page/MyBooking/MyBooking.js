@@ -7,6 +7,7 @@ const MyBooking = () => {
   const { user } = useAuth();
   const [error, setError] = useState("");
   const [myBookings, setMyBookings] = useState([]);
+  const [myBookingRooms, setMyBookingRooms] = useState([]);
   const [loader, setLoader] = useState(true);
 
   // add title for this webpage
@@ -25,10 +26,25 @@ const MyBooking = () => {
         } else {
           setMyBookings(res.data);
         }
+      });
+  }, [user]);
+
+  // get my booking room data by ids
+  useEffect(() => {
+    // loader true if dependency update
+    setLoader(true);
+    axios
+      .post("http://localhost:5000/rooms/ids", {
+        ids: myBookings.map((booking) => booking.roomId),
+      })
+      .then((res) => {
+        // set my booking room state
+        setMyBookingRooms(res.data);
+        console.log(res.data);
         // close loader
         setLoader(false);
       });
-  }, [user]);
+  }, [myBookings]);
 
   return (
     <div className="text-center">
@@ -38,8 +54,8 @@ const MyBooking = () => {
         <h3 className="text-danger">{error}</h3>
       ) : (
         <ul>
-          {myBookings.map((booking) => (
-            <li key={booking._id}>{booking.customerEmail}</li>
+          {myBookingRooms.map((booking) => (
+            <li key={booking._id}>{booking.title}</li>
           ))}
         </ul>
       )}

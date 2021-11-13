@@ -1,3 +1,10 @@
+.login-wrapper {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-with-google-btn {
   transition: background-color 0.3s, box-shadow 0.3s;
 
