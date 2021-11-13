@@ -16,6 +16,7 @@ import AuthProvider from "./Context/AuthProvider";
 import AddRoom from "./components/Page/AddRoom/AddRoom";
 import Rooms from "./components/Page/Rooms/Rooms";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ManageBooking from "./components/Page/ManageBooking/ManageBooking";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             <MyBooking></MyBooking>
           </PrivateRoute>
           <PrivateRoute exact path="/manage-bookings">
-            <MyBooking></MyBooking>
+            <ManageBooking></ManageBooking>
           </PrivateRoute>
           <Route exact path="/contact-us">
             <Contact></Contact>
