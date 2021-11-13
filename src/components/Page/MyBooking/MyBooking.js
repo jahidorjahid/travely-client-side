@@ -24,9 +24,9 @@ const MyBooking = () => {
           setError(res.data.error);
         } else {
           setMyBookings(res.data);
-          // close loader
-          setLoader(false);
         }
+        // close loader
+        setLoader(false);
       });
   }, [user]);
 

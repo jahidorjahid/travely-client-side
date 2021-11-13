@@ -1,12 +1,12 @@
 // Travely web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCMrqTK7f5RKrhzPgFLGPJttMjHTCpnDwY",
-  authDomain: "travely-web.firebaseapp.com",
-  projectId: "travely-web",
-  storageBucket: "travely-web.appspot.com",
-  messagingSenderId: "340126397478",
-  appId: "1:340126397478:web:a7c40c589d63b7f59de2e7",
-  measurementId: "G-KKCFY3JET4",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 export default firebaseConfig;
