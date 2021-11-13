@@ -16,7 +16,7 @@ const MyBooking = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/bookings", {
+      .post("https://travely-server.herokuapp.com/bookings", {
         email: user.email,
       })
       .then((res) => {

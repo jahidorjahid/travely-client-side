@@ -4,7 +4,7 @@ import Room from "./Room/Room";
 import Loading from "react-fullscreen-loading";
 
 const Rooms = () => {
-  const API_URL = "http://localhost:5000/rooms";
+  const API_URL = "https://travely-server.herokuapp.com/rooms";
   const [rooms, setRooms] = useState([]);
   const [loader, setLoader] = useState(true);
 

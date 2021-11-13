@@ -13,16 +13,18 @@ const AddRoom = () => {
     data.hostImg = user.photoURL;
     console.log(data);
 
-    axios.post("http://localhost:5000/rooms", data).then((res) => {
-      if (res.data.insertedId) {
-        // room added success
-        swal("Success!", "Room added successfull!", "success");
-        // reset form
-        reset();
-      } else {
-        swal("Failed!", "Room added failed!", "danger");
-      }
-    });
+    axios
+      .post("https://travely-server.herokuapp.com/rooms", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          // room added success
+          swal("Success!", "Room added successfull!", "success");
+          // reset form
+          reset();
+        } else {
+          swal("Failed!", "Room added failed!", "danger");
+        }
+      });
   };
 
   // add title for this webpage

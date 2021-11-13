@@ -11,8 +11,8 @@ const RoomSingle = () => {
   const [room, setRoom] = useState({});
   const [loader, setLoader] = useState(true);
   const [bookBtnText, setbookBtnText] = useState("Confirm Book");
-  const API_GET_SINGLE = `http://localhost:5000/rooms/${roomId}`;
-  const API_POST_BOOKING = `http://localhost:5000/bookings/add`;
+  const API_GET_SINGLE = `https://travely-server.herokuapp.com/rooms/${roomId}`;
+  const API_POST_BOOKING = `https://travely-server.herokuapp.com/bookings/add`;
 
   // handle confirm booking
   const handleConfirmBook = () => {

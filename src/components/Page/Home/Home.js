@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Room from "../Rooms/Room/Room";
 
 const Home = () => {
-  const API_URL = "http://localhost:5000/rooms";
+  const API_URL = "https://travely-server.herokuapp.com/rooms";
   const [rooms, setRooms] = useState([]);
 
   // add title for this webpage
