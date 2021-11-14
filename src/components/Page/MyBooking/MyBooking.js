@@ -7,9 +7,8 @@ import Card from "./Card";
 const MyBooking = () => {
   const { user } = useAuth();
   const [error, setError] = useState("");
-  const [updateState, setUpdateState] = useState(false);
+  const [updateState, setUpdateState] = useState({});
   const [myBookings, setMyBookings] = useState([]);
-  const [myBookingRooms, setMyBookingRooms] = useState([]);
   const [loader, setLoader] = useState(true);
 
   // add title for this webpage
@@ -28,33 +27,16 @@ const MyBooking = () => {
         } else {
           setMyBookings(res.data);
         }
-      });
-  }, [user]);
-
-  // get my booking room data by ids
-  useEffect(() => {
-    // loader true if dependency update
-    setLoader(true);
-    axios
-      .post("https://travely-server.herokuapp.com/rooms/ids", {
-        ids: myBookings.map((booking) => booking.roomId),
-      })
-      .then((res) => {
-        // set my booking room state
-        setMyBookingRooms(res.data);
-
         // close loader
         setLoader(false);
       });
-  }, [myBookings]);
+  }, [updateState]);
 
-  // get current booking id
-  const getBookingId = (index) => {
-    return myBookings[index]._id;
-  };
-
-  const handleUpdateBookingState = () => {
-    setUpdateState(true);
+  const handleUpdateBookingState = (loading, isDeleteBooking = false) => {
+    setLoader(loading);
+    if (isDeleteBooking) {
+      setUpdateState(isDeleteBooking);
+    }
   };
 
   return (
@@ -69,11 +51,11 @@ const MyBooking = () => {
             {error ? (
               <h1 className="text-center text-muted">{error}</h1>
             ) : (
-              myBookingRooms.map((room, index) => (
+              myBookings.map((booking) => (
                 <Card
-                  key={getBookingId(index)}
-                  bookingId={getBookingId(index)}
-                  data={room}
+                  key={booking._id}
+                  bookingId={booking._id}
+                  roomId={booking.roomId}
                   updateState={handleUpdateBookingState}
                 ></Card>
               ))

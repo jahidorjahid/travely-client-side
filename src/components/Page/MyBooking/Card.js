@@ -1,8 +1,8 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
-const Card = ({ bookingId, data, updateState }) => {
-  const { img1, title, price, hostName } = data;
+const Card = ({ bookingId, roomId, updateState }) => {
+  const [myBookingRoom, setMyBookingRoom] = useState({});
 
   // handle delete self booking data
   const handleDelete = (bId) => {
@@ -15,14 +15,16 @@ const Card = ({ bookingId, data, updateState }) => {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .post("http://localhost:5000/bookings/delete", { id: bId })
+          .post("https://travely-server.herokuapp.com/bookings/delete", {
+            id: bId,
+          })
           .then((res) => {
             if (res.data.deletedCount === 1) {
               swal("Aww! Your Booking has been deleted!", {
                 icon: "success",
               }).then((res) => {
                 if (res) {
-                  updateState();
+                  updateState(true, { deleteId: bId });
                 }
               });
             } else {
@@ -30,8 +32,6 @@ const Card = ({ bookingId, data, updateState }) => {
                 icon: "warning",
               });
             }
-
-            console.log(res);
           });
       } else {
         swal("Your Booking is safe!");
@@ -39,13 +39,31 @@ const Card = ({ bookingId, data, updateState }) => {
     });
   };
 
+  // get my booking room data by ids
+  useEffect(() => {
+    // // loader true if dependency update
+    // // close loader
+    updateState(true);
+    axios
+      .post("https://travely-server.herokuapp.com/rooms/id", {
+        roomId: roomId,
+      })
+      .then((res) => {
+        // set my booking room state
+        setMyBookingRoom(res.data);
+
+        // // close loader
+        updateState(false);
+      });
+  }, []);
+
   return (
     <div className="col-lg-6">
       <div className="card mb-3">
         <div className="row gy-3">
           <div className="col-md-4">
             <img
-              src={img1}
+              src={myBookingRoom.img1}
               className="rounded-start"
               width="100%"
               height="100%"
@@ -54,11 +72,13 @@ const Card = ({ bookingId, data, updateState }) => {
           </div>
           <div className="col-md-8">
             <div className="card-body border-top-0">
-              <h5 className="card-title">{title}</h5>
+              <h5 className="card-title">{myBookingRoom.title}</h5>
               <p className="card-text">
-                <small className="text-muted">Price: {price}</small>
+                <small className="text-muted">
+                  Price: {myBookingRoom.price}
+                </small>
                 {" | "}
-                <span>Hosted by {hostName}</span>
+                <span>Hosted by {myBookingRoom.hostName}</span>
               </p>
               <button
                 onClick={() => {
