@@ -2,10 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "react-fullscreen-loading";
+import Card from "./Card";
 
 const MyBooking = () => {
   const { user } = useAuth();
   const [error, setError] = useState("");
+  const [updateState, setUpdateState] = useState(false);
   const [myBookings, setMyBookings] = useState([]);
   const [myBookingRooms, setMyBookingRooms] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -34,31 +36,51 @@ const MyBooking = () => {
     // loader true if dependency update
     setLoader(true);
     axios
-      .post("http://localhost:5000/rooms/ids", {
+      .post("https://travely-server.herokuapp.com/rooms/ids", {
         ids: myBookings.map((booking) => booking.roomId),
       })
       .then((res) => {
         // set my booking room state
         setMyBookingRooms(res.data);
-        console.log(res.data);
+
         // close loader
         setLoader(false);
       });
   }, [myBookings]);
 
+  // get current booking id
+  const getBookingId = (index) => {
+    return myBookings[index]._id;
+  };
+
+  const handleUpdateBookingState = () => {
+    setUpdateState(true);
+  };
+
   return (
-    <div className="text-center">
+    <div style={{ backgroundColor: "#f5f6f6" }} className="py-5">
       <Loading loading={loader} loaderColor="#3498db" />
-      <h2>Manage my all booking</h2>
-      {error ? (
-        <h3 className="text-danger">{error}</h3>
-      ) : (
-        <ul>
-          {myBookingRooms.map((booking) => (
-            <li key={booking._id}>{booking.title}</li>
-          ))}
-        </ul>
-      )}
+      <div className="container">
+        <div className="bg-white py-5 shadow p-3 rounded">
+          <h4 className="text-center">Manage My Bookings</h4>
+          <hr />
+          <hr />
+          <div className="row">
+            {error ? (
+              <h1 className="text-center text-muted">{error}</h1>
+            ) : (
+              myBookingRooms.map((room, index) => (
+                <Card
+                  key={getBookingId(index)}
+                  bookingId={getBookingId(index)}
+                  data={room}
+                  updateState={handleUpdateBookingState}
+                ></Card>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
