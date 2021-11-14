@@ -11,7 +11,6 @@ const AddRoom = () => {
     data.hostName = user.displayName;
     data.hostEmail = user.email;
     data.hostImg = user.photoURL;
-    console.log(data);
 
     axios
       .post("https://travely-server.herokuapp.com/rooms", data)

@@ -21,7 +21,13 @@ const Login = () => {
       <div className="container">
         <div className="bg-light shadow p-5 rounded login-wrapper">
           {user?.email ? (
-            <button onClick={logOut}>Logout ({user?.email})</button>
+            <button
+              type="button"
+              class="login-with-google-btn"
+              onClick={logOut}
+            >
+              Logout ({user?.email})
+            </button>
           ) : (
             <button
               type="button"

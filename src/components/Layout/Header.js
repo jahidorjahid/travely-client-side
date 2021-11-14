@@ -16,7 +16,6 @@ const Test = () => {
     } else {
       setCollapse(true);
     }
-    console.log("clicked", collapse);
   };
 
   // handle user button click event

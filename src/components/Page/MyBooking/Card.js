@@ -1,9 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
-const Card = ({ bookingId, roomId, updateState }) => {
+const Card = ({ bookingId, roomId, customer, updateState }) => {
   const [myBookingRoom, setMyBookingRoom] = useState({});
 
+  // call only manage all booking components
+  if (customer) {
+    const { name, email } = customer;
+  }
   // handle delete self booking data
   const handleDelete = (bId) => {
     swal({
@@ -72,14 +77,29 @@ const Card = ({ bookingId, roomId, updateState }) => {
           </div>
           <div className="col-md-8">
             <div className="card-body border-top-0">
-              <h5 className="card-title">{myBookingRoom.title}</h5>
-              <p className="card-text">
-                <small className="text-muted">
-                  Price: {myBookingRoom.price}
-                </small>
-                {" | "}
-                <span>Hosted by {myBookingRoom.hostName}</span>
-              </p>
+              <Link to={`/rooms/${myBookingRoom._id}`}>
+                <h5 className="card-title">{myBookingRoom.title}</h5>
+              </Link>
+              {customer ? (
+                <>
+                  <p className="card-text">
+                    <small className="text-muted">
+                      Host: {myBookingRoom.hostName}
+                    </small>
+                    {" | "}
+                    <span>Client: {customer.name}</span>
+                  </p>
+                  <p>Client Email: {customer.email}</p>
+                </>
+              ) : (
+                <p className="card-text">
+                  <small className="text-muted">
+                    Price: {myBookingRoom.price}
+                  </small>
+                  {" | "}
+                  <span>Hosted by {myBookingRoom.hostName}</span>
+                </p>
+              )}
               <button
                 onClick={() => {
                   handleDelete(bookingId);

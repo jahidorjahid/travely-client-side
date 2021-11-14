@@ -27,7 +27,6 @@ const RoomSingle = () => {
         if (res.data.insertedId) {
           setbookBtnText("Booked");
         }
-        console.log(res.data);
       });
   };
 
@@ -119,12 +118,18 @@ const RoomSingle = () => {
                   $/night
                 </p>
                 <button onClick={handleConfirmBook} className="btn btn-dark">
-                  <span
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                    aria-hidden="true"
-                  ></span>
-                  {bookBtnText}
+                  {bookBtnText === "Loading" ? (
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      {bookBtnText}
+                    </>
+                  ) : (
+                    bookBtnText
+                  )}
                 </button>
               </div>
             </div>

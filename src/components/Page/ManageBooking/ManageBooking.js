@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "react-fullscreen-loading";
+import Card from "../MyBooking/Card";
 
 const ManageBooking = () => {
-  const { user } = useAuth();
   const [error, setError] = useState("");
+  const [updateState, setUpdateState] = useState({});
   const [ManageBookings, setManageBookings] = useState([]);
   const [loader, setLoader] = useState(true);
 
@@ -24,21 +25,43 @@ const ManageBooking = () => {
       // close loader
       setLoader(false);
     });
-  }, [user]);
+  }, [updateState]);
 
+  // handle state changer for call api after every delete and react laoder
+  const handleUpdateBookingState = (loading, isDeleteBooking = false) => {
+    setLoader(loading);
+    if (isDeleteBooking) {
+      setUpdateState(isDeleteBooking);
+    }
+  };
   return (
-    <div className="text-center">
+    <div style={{ backgroundColor: "#f5f6f6" }} className="py-5">
       <Loading loading={loader} loaderColor="#3498db" />
-      <h2>Manage all booking</h2>
-      {error ? (
-        <h3 className="text-danger">{error}</h3>
-      ) : (
-        <ul>
-          {ManageBookings.map((booking) => (
-            <li key={booking._id}>{booking.customerEmail}</li>
-          ))}
-        </ul>
-      )}
+      <div className="container">
+        <div className="bg-white py-5 shadow p-3 rounded">
+          <h4 className="text-center">Manage All Bookings</h4>
+          <hr />
+          <hr />
+          <div className="row">
+            {error ? (
+              <h1 className="text-center text-muted">{error}</h1>
+            ) : (
+              ManageBookings.map((booking) => (
+                <Card
+                  key={booking._id}
+                  bookingId={booking._id}
+                  roomId={booking.roomId}
+                  customer={{
+                    name: booking.customerName,
+                    email: booking.customerEmail,
+                  }}
+                  updateState={handleUpdateBookingState}
+                ></Card>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

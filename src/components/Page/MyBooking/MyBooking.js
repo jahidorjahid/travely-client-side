@@ -32,6 +32,7 @@ const MyBooking = () => {
       });
   }, [updateState]);
 
+  // handle state changer for call api after every delete and react laoder
   const handleUpdateBookingState = (loading, isDeleteBooking = false) => {
     setLoader(loading);
     if (isDeleteBooking) {
