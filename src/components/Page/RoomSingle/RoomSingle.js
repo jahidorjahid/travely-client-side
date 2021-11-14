@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import axios from "axios";
 import "./RoomSingle.css";
 import Loading from "react-fullscreen-loading";
@@ -8,6 +8,7 @@ import useAuth from "../../../hooks/useAuth";
 const RoomSingle = () => {
   const { roomId } = useParams();
   const { user } = useAuth();
+  const history = useHistory();
   const [room, setRoom] = useState({});
   const [loader, setLoader] = useState(true);
   const [bookBtnText, setbookBtnText] = useState("Confirm Book");
@@ -16,18 +17,22 @@ const RoomSingle = () => {
 
   // handle confirm booking
   const handleConfirmBook = () => {
-    setbookBtnText("Loading");
-    axios
-      .post(API_POST_BOOKING, {
-        roomId: room._id,
-        customerName: user.displayName,
-        customerEmail: user.email,
-      })
-      .then((res) => {
-        if (res.data.insertedId) {
-          setbookBtnText("Booked");
-        }
-      });
+    if (!user.email) {
+      history.push("/login", { from: history.location.pathname });
+    } else {
+      setbookBtnText("Loading");
+      axios
+        .post(API_POST_BOOKING, {
+          roomId: room._id,
+          customerName: user.displayName,
+          customerEmail: user.email,
+        })
+        .then((res) => {
+          if (res.data.insertedId) {
+            setbookBtnText("Booked");
+          }
+        });
+    }
   };
 
   // add title for this webpage
