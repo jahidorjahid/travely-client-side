@@ -14,23 +14,29 @@ This is an Tourism App built with React, Node, Express, Mongodb and Bootstrap.
 
 - In your directory after cloning please do the following:
 
-> Install dependencies for server in `package.json`
+> Install dependencies on client side in `package.json`
 
 ```shell
-$ cd react-education-app
+$ cd react-travely-app
 $ npm install
 ```
 
-> Install dependencies on client side
+> Create .env.local for firebase configuration
 
 ```shell
-$ cd react-education-app/client
-$ npm install
+REACT_APP_API_KEY={firebase_api_key}
+REACT_APP_AUTH_DOMAIN={firebase_auth_domain}
+REACT_APP_PROJECT_ID={firebase_project_id}
+REACT_APP_STORAGE_BUCKET={firebase_storage_bucket}
+REACT_APP_MESSAGING_SENDER_ID={firebase_messaging_sender_id}
+REACT_APP_APP_ID={firebase_app_id}
+REACT_APP_MEASUREMENT_ID={firebase_measurement_id} (optional)
 ```
 
 ## Features
 
 - Login
+- Firebase
 - React Routing Dom
 - Private Route
 - Add Booking
