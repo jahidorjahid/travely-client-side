@@ -1,6 +1,6 @@
 # Getting start with <a href="https://travely-web.web.app/" target="_blank">Travely</a>
 
-<a href="https://travely-web.web.app/"><img src="https://github.com/programming-hero-web-course1/tourism-or-delivery-website-client-side-jahidorjahid/blob/main/screenshot.png" alt=""></a>
+<a href="https://travely-web.web.app/"><img src="https://github.com/jahidorjahid/travely-client-side/blob/main/screenshot.png" alt=""></a>
 This project was with [Create React App](https://github.com/facebook/create-react-app).
 
 # React Health Care Web App
@@ -9,7 +9,7 @@ This is an Tourism App built with React, Node, Express, Mongodb and Bootstrap.
 
 ### Installation
 
-- Please clone this repository using `git clone https://github.com/programming-hero-web-course1/tourism-or-delivery-website-client-side-jahidorjahid.git` first. There will be two package.json files, one for the server side and the other for the client side.
+- Please clone this repository using `git clone https://github.com/jahidorjahid/travely-client-side.git` first. There will be two package.json files, one for the server side and the other for the client side.
   This is because server and client have to start at the same time. If you do not have NPM installed, please do so at `https://www.npmjs.com`. This is also a very good project for having a starter platform with react.js.
 
 - In your directory after cloning please do the following:
@@ -17,8 +17,9 @@ This is an Tourism App built with React, Node, Express, Mongodb and Bootstrap.
 > Install dependencies on client side in `package.json`
 
 ```shell
-$ cd react-travely-app
+$ cd travely-client-side-jahidorjahid
 $ npm install
+$ npm start
 ```
 
 > Create .env.local for firebase configuration
